@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='style_tour.css')}}">
+
+
+
+</head>
+<body>
+
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="{{url_for('rout')}}" class="navbar-brand d-flex align-items-center">
+        <strong>Penciling</strong>
+      </a>
+
+
+      {% if current_user.is_authenticated %}
+        {% if current_user.rol == 1 %}
+          <a class="btn btn-secondary my-2" href="{{url_for('admin.index')}}">Админ</a>
+          <a class="btn btn-secondary my-2" href="{{url_for('tour_create')}}">Создание поездки</a>
+          <a href="{{url_for('logout')}}" class="btn btn-secondary my-2">Выход</a>
+        {% else  %}
+          <a href="{{url_for('card')}}" class="btn btn-secondary my-2">Профиль</a>
+          <a href="{{url_for('logout')}}" class="btn btn-secondary my-2">Выход</a>
+      {% endif %}
+      {% else  %}
+        <a href="{{url_for('login_page')}}" class="btn btn-secondary my-2">Вход</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <section>
+    <div class="kup">
+      <h1>{{tour.name}}</h1>
+      <p>куплено {{tour.quantity_emp}} / {{tour.quantity}}</p>
+
+    </div>
+    <div class="but_price">
+      <div>
+        <p class="price">{{tour.price}} ₽ с человека </p>
+        <p>{{tour.date}}</p>
+      </div>
+      <a href="/tour/{{tour.id}}/buy_terms" class="btn btn-info">Купить</a>
+    </div>
+
+  </section>
+
+  <script src="{{url_for('static', filename='/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img  src="data:image/jpeg;base64,{{ tour.photo }}" class="photo" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="data:image/jpeg;base64,{{ tour.photo1 }}" class="photo" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="data:image/jpeg;base64,{{ tour.photo2 }}" class="photo" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="data:image/jpeg;base64,{{ tour.photo3 }}" class="photo" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="data:image/jpeg;base64,{{ tour.photo4 }}" class="photo" alt="...">
+        </div>
+      </div>
+    </div>
+  <div class="arrow">
+    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <img src="/static/Arrow1.png" aria-hidden="true">
+    </button>
+    <button  type="button"   data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <img src="/static/Arrow2.png" aria-hidden="true">
+    </button>
+</div>
+
+
+
+
+  <section class="pereezd">
+    <h1>Переезд</h1>
+    <div class="where_from">
+      <div class="where_from_1">
+        <h3>Туда</h3>
+        <p class="poezd">Поезд</p>
+      </div>
+      <div class="otprav">
+        <h5>Отправление</h5>
+        <p>{{tour.date}} // {{tour.time1}}</p>
+        <p>{{tour.where_from}}</p>
+      </div>
+      <div class="prib">
+        <h5>Прибытие</h5>
+        <p>{{tour.date}} // {{tour.time2}}</p>
+        <p>{{tour.where}}</p>
+      </div>
+    </div>
+    <div class="where_from">
+      <div class="where_from_1">
+        <h3>Обратно</h3>
+        <p class="poezd">Поезд</p>
+      </div>
+      <div class="otprav">
+        <h5>Отправление</h5>
+        <p>{{tour.date_obr}} // {{tour.time_obr1}}</p>
+        <p>{{tour.where}}</p>
+      </div>
+      <div class="prib">
+        <h5>Прибытие</h5>
+        <p>{{tour.date_obr}} // {{tour.time_obr2}}</p>
+        <p>{{tour.where_from}}</p>
+      </div>
+    </div>
+  </section>
+  <section class="proj"> 
+    <h1>Проживание</h1>
+    <div class="proj_cube">
+      <div class="proj_form">
+      <h3>{{tour.hotel}}</h3>
+      <p class="poezd">Времена года</p>
+      <p class="time">Доп информация</p>
+      </div>
+    <div class="zasel">
+      <h5>Заселение</h5>
+      <p class="hotel">{{tour.hotel_date}} // после 22:00</p>
+      <p>{{info}}</p>
+    </div>
+    <div class="zasel">
+      <h5>Выселение</h5>
+      <p class="hotel">{{tour.hotel_date2}} // до 04:00</p>
+    </div>
+      </div>
+  </section>
+  <section class="opis">
+    <h1>Описание туристического маршрута</h1>
+    <div class="opis_form">
+      <div class="opis_text">
+        {{tour.route_tour}}<br>{{tour.info}}
+      </div>
+      </div>
+  </section>
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a class="btn btn-secondary my-2" href="#" c>↑</a>
+    </p>
+    <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
+    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.2/getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer>
+
+
+<script src="{{url_for('static', filename='/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

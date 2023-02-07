@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="{{url_for('rout')}}" class="navbar-brand d-flex align-items-center">
+        <strong>Penciling</strong>
+      </a>
+
+
+      {% if current_user.is_authenticated %}
+
+        <a href="{{url_for('card')}}" class="btn btn-secondary my-3">Профиль</a>
+        <a href="{{url_for('logout')}}" class="btn btn-secondary my-2">Выход</a>
+      {% else  %}
+        <a href="{{url_for('login_page')}}" class="btn btn-secondary my-2">Вход</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Карточка поездки</h4>
+                </div>
+                <form method="post" enctype="multipart/form-data" class="row mt-3">
+                    <div class="col-md-12 pb-2"><label  class="labels">Название поездки</label><input name="name" type="text" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label  class="labels">Туристическая компания</label><input name="name_operator" type="text" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label  class="labels">Откуда</label>
+                        <select name="where_from" type="text" class="form-control">
+                            {% for o in city %}
+                            <option value="{{o.city}}">{{o.city}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-12 pb-2"><label  class="labels">Куда</label>
+                        <select name="where" type="text" class="form-control">
+                            {% for o in city2 %}
+                            <option value="{{o.city2}}">{{o.city2}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-12 pb-2"><label  class="labels"> Дата</label><input name="date" type="date" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label  class="labels"> Дата возвращения</label><input name="date_obr" type="date" class="form-control"></div>
+                    <div class="col-md-12 pb-2 " ><label class="labels">Цена</label><input name="price" type="number" class="form-control" ></div>
+                    <div class="col-md-12"><label class="labels">Время отправления</label><input name="time1" type="time" class="form-control" ></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Время прибытия</label><input name="time2" type="time" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Обратное время отправления</label><input name="time_obr1" type="time" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Обратное время прибытия</label><input name="time_obr2" type="time" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Транспорт</label>
+                        <select name="transport" type="text" class="form-control" >
+                            {% for o in auto %}
+                            <option value="{{o.auto}}">{{o.auto}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-12 pb-2"><label class="labels">Отель</label>
+                        <select name="hotel"  class="form-control">
+                            {% for o in hotel %}
+                                    <option value="{{o.hotel}}">{{o.hotel}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-12 pb-2"><label class="labels">Дата заселения в отель</label><input name="hotel_date" type="date" class="form-control" ></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Дата выселения из отеля</label><input name="hotel_date2" type="date" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Подробный маршрут</label><input name="route_tour" type="text" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Ограничение по возрасту</label><input name="age" type="number" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Подробная информация</label><input name="info" type="text" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Количество свободных мест</label><input name="quantity" type="number" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Количество занятых мест</label><input name="quantity_emp" type="number" class="form-control"></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Фото</label><input name="photo" type="file" class="form-control" multiple></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Дополнительное фото 1</label><input name="photo1" type="file" class="form-control" multiple></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Дополнительное фото 2</label><input name="photo2" type="file" class="form-control" multiple></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Дополнительное фото 3</label><input name="photo3" type="file" class="form-control" multiple></div>
+                    <div class="col-md-12 pb-2"><label class="labels">Дополнительное фото 4</label><input name="photo4" type="file" class="form-control" multiple></div>
+
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Опубликовать</button></div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

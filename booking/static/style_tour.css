@@ -1,0 +1,272 @@
+.main {
+  margin-left: 400px;
+  font-family: "Segoe UI";
+}
+
+.price {
+  margin: 10px 0 8px 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.mona {
+    margin-left:250px
+}
+
+.kup {
+  display: flex;
+}
+
+.kup p {
+  margin: 15px 0 0 575px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: right;
+  color: #000000;
+}
+
+.but_price {
+  display: flex;
+}
+
+.but_price a {
+  margin: 20px 0 0 645px;
+  width: 107px;
+  height: 40px;
+}
+
+.photo {
+    margin-top:50px;
+    max-width: 845px;
+    max-height: 468px;
+}
+
+
+
+.arrow {
+  margin: 30px 0 0 235px;
+}
+
+.arrow button {
+  background: none;
+  border: none;
+  width: 100px;
+  height: auto;
+  margin-left: 20px;
+}
+
+.pereezd {
+  margin-top: 35px;
+}
+
+.pereezd h1 {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 48px;
+  color: #000000;
+}
+
+.where_from {
+  width: 1120px;
+  height: 278px;
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  margin-bottom: 60px;
+}
+
+.where_from_1 {
+  display: flex;
+}
+
+.where_from_1 h3 {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  margin: 20px 0 0 57px;
+}
+
+.where_from_1 p {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.time {
+  margin: 20px 0 0 500px;
+}
+
+.poezd {
+  margin: 20px 0 0 285px;
+}
+
+.otprav {
+  display: flex;
+}
+
+.otprav h5 {
+  margin: 32px 0 0 155px;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.otprav p {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #000000;
+  margin: 29px 0 0 115px;
+}
+
+.otprav span {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  transform: rotate(90deg);
+  width: 185px;
+  height: 0px;
+  margin-top: 123px;
+}
+
+.line {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 445px;
+  height: 0px;
+  position: absolute;
+  left: 780px;
+  bottom: 66px;
+}
+
+.prib {
+  display: flex;
+}
+
+.prib h5 {
+  margin: 32px 0 0 180px;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.prib p {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #000000;
+  margin: 29px 0 0 115px;
+}
+
+.proj {
+}
+
+.proj_cube {
+  width: 1120px;
+  height: 278px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+}
+
+.proj h1 {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 48px;
+  color: #000000;
+}
+
+.proj_form {
+  display: flex;
+}
+
+.proj_form h3 {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  margin: 20px 0 0 44px;
+}
+
+.proj_form p {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  margin: 20px 0 0 285px;
+}
+
+.zasel {
+  margin: 32px 0 0 179px;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+}
+
+.hotel {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #000000;
+  margin: 0 0 0 105px;
+}
+
+
+
+.opis h1 {
+  margin: 60px 0 40px 0;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 48px;
+  color: #000000;
+}
+
+.opis_form {
+  box-sizing: border-box;
+  width: 1120px;
+  height: 220px;
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+}
+
+.opis_text {
+    margin:20px 0 0  82px;
+}

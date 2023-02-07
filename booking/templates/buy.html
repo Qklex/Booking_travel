@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='style_tour.css')}}">
+</head>
+<body>
+<div class="container py-5">
+    <!-- For demo purpose -->
+    <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-6">Форма оплаты</h1>
+        </div>
+    </div> <!-- End -->
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="card ">
+                <div class="card-header">
+                    <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                        <!-- Credit card form tabs -->
+                        <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                            <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Кредитная карта </a> </li>
+                          </ul>
+                    </div> <!-- End -->
+                    <!-- Credit card form content -->
+                    <div class="tab-content">
+                        <!-- credit card info-->
+                        <div id="credit-card" class="tab-pane fade show active pt-3">
+                            <form  method="post" role="form" onsubmit="event.preventDefault()">
+                                <div class="form-group">
+                                        <h6>Цена</h6>
+                                    </label> <p>{{tour.price}} ₽</p>
+                                </div>
+                                <form method="post" >
+                                        <h6>Страховка</h6>
+                                    </label>
+                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="strahovka">
+                                        {% for o in sth %}
+                                        <option value="{{o.sth}}">{{o.sth}}</option>
+                                        {% endfor %}                                        }
+                                    </select>
+                                </form>
+                                <div class="form-group">
+                                        <h6>Владелец карты</h6>
+                                    </label> <input type="text" name="username" placeholder="Имя владельца карты" required class="form-control "> </div>
+                                <div class="form-group">
+                                        <h6>Номер карты</h6>
+                                    </label>
+                                    <div class="input-group"> <input  maxlength="12" type="text" name="cardNumber" placeholder="Номер карты" class="form-control " required>
+                                        <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group"> <label><span class="hidden-xs">
+                                                    <h6>Срок действия</h6>
+                                                </span></label>
+                                            <div class="input-group"> <input type="number" placeholder="ММ" maxlength="2" name="" class="form-control" required> <input type="number" maxlength="2" placeholder="ГГ" name="" class="form-control" required> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
+                                                <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                            </label> <input type="text" maxlength="3" required class="form-control"> </div>
+                                    </div>
+                                </div>
+                                <form method="post" class="form-switch ">
+                                  <input class="form-check-input" name='check' type="checkbox" value="on" id="flexSwitchCheckDefault">
+                                  <label class="form-check-label" for="flexSwitchCheckDefault">Пользовательское соглашение о покупке товара компани Penciling</label>
+                                </form>
+
+
+                                <div class="card-footer"> <a href="/tour/{{tour.id}}/buy_terms/buy/check" type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Оплатить </a>
+                            </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

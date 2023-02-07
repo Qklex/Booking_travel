@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='style_tour.css')}}">
+</head>
+<body>
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="{{url_for('rout')}}" class="navbar-brand d-flex align-items-center">
+        <strong>Penciling</strong>
+      </a>
+
+
+      {% if current_user.is_authenticated %}
+        {% if current_user.rol == 1 %}
+          <a class="btn btn-secondary my-2" href="{{url_for('admin.index')}}">Админ</a>
+          <a class="btn btn-secondary my-2" href="{{url_for('tour_create')}}">Создание поездки</a>
+          <a href="{{url_for('logout')}}" class="btn btn-secondary my-2">Выход</a>
+        {% else  %}
+          <a href="{{url_for('card')}}" class="btn btn-secondary my-2">Профиль</a>
+          <a href="{{url_for('logout')}}" class="btn btn-secondary my-2">Выход</a>
+      {% endif %}
+      {% else  %}
+        <a href="{{url_for('login_page')}}" class="btn btn-secondary my-2">Вход</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<main>
+
+<form method="post" class="col-md-12 pb-2"><label  class="labels">Фильтрация</label>
+                        <select name="city" type="text" >
+                            {% for o in city2 %}
+                            <option value="{{o.city2}}">{{o.city2}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="hot" type="text">
+                          {% for o in hotel %}
+                            <option value="{{o.hotel}}">{{o.hotel}}</option>
+                            {% endfor %}
+                        </select>
+                      <button class="btn btn-secondary my-2" type="submit">Принять</button>
+                    </form>
+<div class="album py-5 bg-light">
+    <div class="container">
+      {% if rst %}
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+      {% for el in rost  %}
+        <div class="col">
+          <div class="card ">
+            <img class="bd-placeholder-img card-img-top"  width="100%" height="330" src="data:image/jpeg;base64,{{ el.photo }}" alt="img_data" id="img1"/>
+            <div class="card-body">
+              <h5 class="card-title">Название: {{el.name }}</h5>
+              <p class="card-text">Информация: {{el.info}}</p>
+              <p class="card-text">Цена: {{el.price}} ₽</p>
+              <p class="card-text">Занятых путёвок: {{el.quantity_emp }} / {{el.quantity}}</p>
+              <a href="tour/{{el.id}}" class="btn btn-info ">Подробнее</a>
+              {% if el.quantity_emp == el.quantity %}
+                  <a href="#" class="btn btn-info"><s>Купить</s></a>
+                {% else %}
+                  <a href="/tour/{{el.id}}/buy_terms" class="btn btn-info">Купить</a>
+                {%endif%}
+            </div>
+          </div>
+      </div>
+        {% endfor %}
+        {% else %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for el in rost  %}
+          <div class="col">
+            <div class="card ">
+              <img class="bd-placeholder-img card-img-top"  width="100%" height="330" src="data:image/jpeg;base64,{{ el.photo }}" alt="img_data" id="img1"/>
+              <div class="card-body">
+                <h5 class="card-title">Название: {{el.name }}</h5>
+                <p class="card-text">Информация: {{el.info}}</p>
+                <p class="card-text">Цена: {{el.price}} ₽</p>
+                <p class="card-text">Занятых путёвок: {{el.quantity_emp }} / {{el.quantity}}</p>
+                <a href="tour/{{el.id}}" class="btn btn-info ">Подробнее</a>
+                {% if el.quantity_emp == el.quantity %}
+                  <a href="#" class="btn btn-info"><s>Купить</s></a>
+                {% else %}
+                  <a href="/tour/{{el.id}}/buy_terms" class="btn btn-info">Купить</a>
+                {%endif%}
+              </div>
+            </div>
+        </div>
+          {% endfor %}
+        {% endif %}
+    </div>
+  </div>
+</div>
+</div>
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a class="btn btn-secondary my-2" href="#" c>↑</a>
+    </div>
+</footer>
+
+
+<link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='style_tour.css')}}">
+
+
+
+
+</body>
+</html>
